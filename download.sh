@@ -4,7 +4,7 @@
 read url
 
 # Change directory to the desired download location
-cd /mnt/storage
+cd $STORAGE_LOCATION
 
 # Run yt-dlp with the URL and output progress
 yt-dlp --progress --newline "$url" 2>&1
