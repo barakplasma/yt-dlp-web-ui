@@ -1,5 +1,5 @@
 # yt-dlp-web-ui
-yt-dlp web ui using https://github.com/joewalnes/websocketd and js
+[yt-dlp](https://github.com/yt-dlp/yt-dlp) web ui using [joewalnes/websocketd](https://github.com/joewalnes/websocketd) and js
 sends a notification when it finishes downloading
 
 ## getting started
