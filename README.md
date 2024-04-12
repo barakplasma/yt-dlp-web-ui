@@ -1,2 +1,9 @@
 # yt-dlp-web-ui
-yt-dlp web ui using websocketd and js
+yt-dlp web ui using https://github.com/joewalnes/websocketd and js
+sends a notification when it finishes downloading
+
+## getting started
+1. download and install yt-dlp and websocketd
+1. download this repo (git clone or zip)
+1. chmod +x start.sh and run it
+1. navigate to localhost:8080
