@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Download Video</title>
+<link rel="stylesheet" href="https://unpkg.com/mvp.css">
+<script>
+let ws;
+
+// Function to connect to the WebSocket server and handle messages
+function connect() {
+    ws = new WebSocket('ws://localhost:8080/');
+    ws.onmessage = function(event) {
+        document.getElementById('output').textContent += event.data + '\n';
+    };
+    ws.onopen = function() {
+        console.log('Connection opened!');
+    };
+    ws.onclose = function() {
+        console.log('Connection closed!');
+        notifyUser('Download complete or an error occurred.');
+    };
+}
+
+// Function to send the URL to the WebSocket server
+function startDownload() {
+    var url = document.getElementById('url').value;
+    if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(url);
+    } else {
+        console.error('WebSocket is not connected.');
+    }
+}
+
+// Function to request notification permission and send the notification
+function notifyUser(message) {
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+    } else if (Notification.permission === "granted") {
+        new Notification(message);
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function(permission) {
+            if (permission === "granted") {
+                new Notification(message);
+            }
+        });
+    }
+}
+
+// Connect to WebSocket server on page load
+window.onload = connect;
+</script>
+</head>
+<body>
+<main>
+    <section>
+        <h1>Download Video</h1>
+        <p>
+            Enter the video URL below and click "Download" to start the download process. The download progress will be displayed in the output area.
+        </p>
+        <input type="text" id="url" placeholder="Enter video URL here">
+        <button onclick="startDownload()">Download</button>
+        <pre id="output"></pre>
+    </section>
+</main>
+</body>
+</html>
+
