@@ -9,3 +9,5 @@ sends a notification when it finishes downloading
 1. export STORAGE_LOCATION=/home/user/download
 1. ./start.sh
 1. navigate to localhost:8080
+2. input a url for yt-dlp to download to your storage location and click download button
+3. watch the output on the webpage, and receive the notification in browser when its done.
