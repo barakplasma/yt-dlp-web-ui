@@ -12,13 +12,15 @@ function connect() {
     ws = new WebSocket('ws://localhost:8080/');
     ws.onmessage = function(event) {
         document.getElementById('output').textContent += event.data + '\n';
+        if (event.data.startsWith("Download status")) {
+            notifyUser(event.data);
+        }
     };
     ws.onopen = function() {
         console.log('Connection opened!');
     };
     ws.onclose = function() {
         console.log('Connection closed!');
-        notifyUser('Download complete or an error occurred.');
     };
 }
 

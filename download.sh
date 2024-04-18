@@ -14,9 +14,9 @@ exit_code=$?
 
 # Check the exit code and send a corresponding message
 if [ $exit_code -eq 0 ]; then
-    echo "Download succeeded with exit code $exit_code"
+    echo "Download status: succeeded with exit code $exit_code"
 else
-    echo "Download failed with exit code $exit_code"
+    echo "Download status: failed with exit code $exit_code"
 fi
 
 # Exit the script with yt-dlp's exit code
